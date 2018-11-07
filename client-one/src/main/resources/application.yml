@@ -1,0 +1,11 @@
+server:
+  port: 8766
+
+spring:
+  application:
+    name: client-one
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.216:8761/eureka/
