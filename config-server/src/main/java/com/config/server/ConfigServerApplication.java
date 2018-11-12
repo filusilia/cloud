@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableEurekaClient
-@EnableConfigServer
 @RestController
 public class ConfigServerApplication {
 
