@@ -1,36 +1,30 @@
 server:
-  port: 80
-
+  port: 8080
 spring:
   application:
     name: service-gateway
+  main:
+    allow-bean-definition-overriding: true
+#  cloud:        # spring cloud gateway 路由配置方式
+#    gateway:
+#      discovery:      #是否与服务发现组件进行结合，通过 serviceId(必须设置成大写) 转发到具体的服务实例。默认为false，设为true便开启通过服务中心的自动根据 serviceId 创建路由的功能。
+#        locator:      #路由访问方式：http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问。
+#          enabled: true
 
-#eureka:
-#  client:
-#    serviceUrl:
-#      defaultZone: http://localhost:8761/eureka/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true
 
-#cloud:
-#  gateway:
-#    filter:
-#      remove-non-proxy-headers:
-#        headers:
-#        - dummy
-#    routes:
-#    - id:  apiuser
-#      # 重点！/info必须使用http进行转发，lb代表从注册中心获取服务
-#      uri: lb://user-service
-#      predicates:
-#      # 重点！转发该路径！,/userapi/**,
-#      - Path=/userapi/**
-#      # http://localhost:6601/userapi/user/users/2, 必须加上StripPrefix=1，否则访问服务时会带上userapi
-#      #而不是我们期望的去掉userapi，只保留**部分
-#      filters:
-#      - StripPrefix=1
-#    - id:  api2user
-#      uri: lb://user-service
-#      predicates:
-#      - Path=/userapi2/**
-#      filters:
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+    reactor.netty: DEBUG
+management.endpoints.web.exposure.include: '*'
 debug: true
-#      - StripPrefix=1
