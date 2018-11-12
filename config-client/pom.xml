@@ -3,45 +3,34 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.aozaki</groupId>
-    <artifactId>spring.cloud.demo</artifactId>
+    <groupId>com.config</groupId>
+    <artifactId>config-client</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>cloudAozaki</name>
+    <name>config-client</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
-        <relativePath/>
+        <groupId>com.aozaki</groupId>
+        <artifactId>spring.cloud.demo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <modules>
-        <module>eureka-server</module>
-        <module>client-one</module>
-        <module>service-ribbon</module>
-        <module>service-feign</module>
-        <!--<module>service-zuul</module>-->
-        <module>service-gateway</module>
-        <module>eureka-server</module>
-        <module>config-server</module>
-    </modules>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -64,5 +53,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
